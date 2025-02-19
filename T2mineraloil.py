@@ -3,8 +3,8 @@ import csv # This is for reading .csv files
 import numpy as np # For large arrays and functions that operate on them
 from scipy.optimize import curve_fit # For various special functions, optimization, linear algebra, integration
 
-time = [2.5, 5, 7.5, 10, 12.5, 15, 17.5, 20, 22.5, 25, 27.5, 30, 32.5, 35, 37.5]
-amplitude = [5.92, 5.64, 5.36, 5.12, 4.84, 4.60, 4.40, 4.20, 3.96, 3.76, 3.60, 3.40, 3.28, 3.12, 3.00]
+time = [3.1, 6.2, 9.3, 12.4, 15.5, 18.6, 21.7, 24.8, 27.9, 31, 34.1, 37.2, 40.3, 43.4]
+amplitude = [6.24, 6.00, 5.76, 5.48, 5.24, 5.04, 4.80, 4.68, 4.44, 4.32, 4.16, 3.96, 3.80, 3.72]
 
 def f(t, a, tau, c): # Here we define the function used in the fit
     return a * np.exp(-t/tau) + c
@@ -30,7 +30,7 @@ x_fitted = np.linspace(np.min(time), np.max(time), 1000) # Create an array from 
 y_fitted = a * np.exp(-x_fitted/tau) + c # Create the fitted curve
 plt.scatter(time, amplitude, c = 'r', label = 'Data') # Makes the plot
 plt.plot(x_fitted, y_fitted, 'k', label = 'Fitted curve') # Plots the fit curve
-plt.ylim(0, 6) # Set y-axis limits
+plt.ylim(0, 7) # Set y-axis limits
 plt.xlabel('Time (ms)') # The x-axis label
 plt.ylabel('Amplitude (V)') # The y-axis label
 plt.legend() # Show legend
@@ -39,7 +39,7 @@ plt.legend() # Show legend
 plt.text(1.0, 2.5, f'$R^2$ = {r2:.4f}', fontsize=10, bbox=dict(facecolor='white', alpha=0.7))
 plt.text(1.0, 3.0, f'$T_2$ = {tau:.4f}', fontsize=10, bbox=dict(facecolor='white', alpha=0.7))
 
-plt.savefig('T2_CuSO4_001M.png', dpi=300, bbox_inches='tight')
+plt.savefig('T2_CuSO4_0005M.png', dpi=300, bbox_inches='tight')
 plt.show()
 
 print("Plot saved.")
